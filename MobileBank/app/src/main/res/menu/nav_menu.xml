@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:title="Home"
+        android:id="@+id/profileFragment"
+        />
+
+<!--    <item-->
+<!--        android:title="Productos"-->
+
+<!--        android:id="@+id/itemsFragment"-->
+<!--        />-->
+
+
+    <item
+        android:title="Detalles Usuarios"
+        android:id="@+id/usersDetailsFragment"
+        />
+
+
+
+
+
+
+
+
+
+
+<!--    <item
+        android:id="@+id/logOutFragment"
+        app:actionViewClass="com.kodin.mobilbank.ui.auth.AuthViewModel"
+        android:title="@string/logout"
+        tools:ignore="Instantiatable" />-->
+
+
+    <item
+        android:id="@+id/logout"
+        android:title="@string/logout" />
+
+
+</menu>
+<!--       <fragment
+        android:id="@+id/updateInsertFragment"
+        android:name="com.supraweb.ui.update_insert.UpdateInsertFragment"
+        android:label="UpdateInsertFragment"
+        tools:layout="@layout/fragment_upsate_insert"        -->

@@ -1,0 +1,47 @@
+<resources>
+    <string name="app_name">Bank Transfer</string>
+    <string name="idprecios"><u><b><i>Precio de Ventas: </i></b></u></string>
+    <string name="roles"> choose a user role </string>
+    <string name="salirBuscador">Salir</string>
+
+    <string name="productos"> Productos </string>
+
+    <string name="idcantidad"><u><b><i>Cantidad : 0</i></b></u></string>
+    <string name="search">Search</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment"> Log Out </string>
+    <string name="title_activity_test">TestActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="logout">Log Out</string>
+    <string name="exit">Salir</string>
+    <string name="update_delete_items">Modificar o Eliminar</string>
+    <string name="registrar_usuarios">Registrar Usuarios</string>
+    <string name="texto_buscars">Buscar un Producto</string>
+    <string name="insertar">Nuevo Producto</string>
+    <string name="delete">Borrar</string>
+    <string name="day_actual">  Suma dìa actual        </string>
+    <string name="sumar_un_day"> Sumar el dìa  </string>
+    <string name="suma_entre_fechas"> Sumas entre Fechas  </string>
+    <string name="reporte">Detalles de cuenta usuarios</string>
+    <string name="salir_reporte">Salir</string>
+    <string name="tobill">Facturar</string>
+    <string name="txt_cantidad">Cantidades 0</string>
+    <string name="txt_sumas">Sumas 0</string>
+    <string name="dialog_wsp">¿Deseas enviar por whatsapp?</string>
+    <string name="send_wsp">Enviar</string>
+    <string name="cancelwsp">Cancelar</string>
+
+    <string-array name="USER_ROLES">
+        <item>ADMIN</item>
+        <item>MODERADOR</item>
+        <item>OPERADOR</item>
+    </string-array>
+
+</resources>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/profileFragment">
+
+    <fragment
+        android:id="@+id/profileFragment"
+        android:name="com.kodin.mobilbank.ui.home.profile.ProfileFragment"
+        android:label="Mobile transfer "
+        tools:layout="@layout/fragment_profile" />
+    <fragment
+        android:id="@+id/usersDetailsFragment"
+        android:name="com.kodin.mobilbank.ui.userDetails.UsersDetailsFragment"
+        android:label="Send funds from users"
+        tools:layout="@layout/fragment_users_details" >
+        <action
+            android:id="@+id/action_usersDetailsFragment_to_UserAccountDetails"
+            app:destination="@id/UserAccountDetails"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/UserAccountDetails"
+        android:name="com.kodin.mobilbank.ui.UserAcountDetail.UserAccountDetails"
+        android:label="Transfer to user"
+        tools:layout="@layout/fragment_user_account_details" >
+        <argument
+            android:name="getUserDetail"
+            app:argType="com.kodin.mobilbank.model.userDetailsBank.UsersDetailsItem" />
+    </fragment>
+
+</navigation>

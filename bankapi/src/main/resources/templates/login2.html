@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio de sesión</title>
+</head>
+<body>
+<h1>Iniciar sesión</h1>
+<div id="jwtToken"></div>
+<div id="error-message"></div>
+
+<form>
+    <div>
+        <label for="usuario">Usuario:</label>
+        <input type="text" id="usuario" name="usuario">
+    </div>
+    <div>
+        <label for="clave">Contraseña:</label>
+        <input type="password" id="clave" name="clave">
+    </div>
+    <button type="submit" id="submit-button">Iniciar sesión</button>
+
+    <div id="jwtToken"></div>
+</form>
+
+<script>
+      const form = document.querySelector('form');
+      const errorMessage = document.getElementById('error-message');
+
+      form.addEventListener('submit', event => {
+        event.preventDefault(); // Evitar que se envíe el formulario
+
+        const loginData = {
+          usuario: form.elements.usuario.value,
+          clave: form.elements.clave.value
+        };
+
+        fetch('http://localhost:8080/authenticate', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(loginData)
+        })
+          .then(response => response.json())
+          .then(data => {
+            // Verificar si la respuesta incluye un token de acceso
+            if (data.jwtToken) {
+              // Almacenar el token en localStorage para usarlo en futuras solicitudes
+              localStorage.setItem('jwtToken', data.jwtToken);
+              var token = localStorage.getItem('jwtToken');
+              // Establecer el contenido del elemento con el valor del token
+              document.getElementById('jwtToken').textContent = token;
+			  document.getElementById('jwtToken').setAttribute("value", token);
+              console.log(data.jwtToken);
+			  alert(data.jwtToken);
+              // Redireccionar al usuario a la página de inicio
+             // window.location.href = 'index.html';
+            } else {
+              // Mostrar el mensaje de error en la página
+              errorMessage.textContent = 'Usuario o contraseña incorrectos.';
+            }
+          })
+          .catch(error => console.error(error));
+      });
+    </script>
+</body>
+</html>

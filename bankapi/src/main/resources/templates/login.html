@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Inicio de sesión</title>
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+</head>
+
+<body>
+<div id="jwtToken"></div>
+<div id="error-message"></div>
+
+<section>
+    <div class="form-box">
+        <div class="form-value">
+            <form>
+                <h2>BankApi Login</h2>
+                <div class="inputbox">
+                    <ion-icon name="mail-outline"></ion-icon>
+                    <input type="text" required id="usuario" name="usuario">
+                    <label for="usuario">Email/User</label>
+                </div>
+                <div class="inputbox">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                    <input type="password" required id="clave" name="clave">
+                    <label for="clave">Password</label>
+                </div>
+                <div class="forget">
+                    <label for="rememberMe"><input type="checkbox" id="rememberMe">Remember Me  <a href="#">Forget Password</a></label>
+                </div>
+                <button type="submit">Log in</button>
+                <div class="register">
+                    <p>Don't have an account <a href="#">Register</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+<script>
+    const form = document.querySelector('form');
+    const errorMessage = document.getElementById('error-message');
+
+    form.addEventListener('submit', event => {
+      event.preventDefault(); // Evitar que se envíe el formulario
+
+      const loginData = {
+        usuario: form.elements.usuario.value,
+        clave: form.elements.clave.value
+      };
+
+      fetch('http://localhost:8080/authenticate', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(loginData)
+      })
+      .then(response => response.json())
+      .then(data => {
+        // Verificar si la respuesta incluye un token de acceso
+        if (data.jwtToken) {
+          // Almacenar el token en localStorage para usarlo en futuras solicitudes
+          localStorage.setItem('jwtToken', data.jwtToken);
+          var token = localStorage.getItem('jwtToken');
+          // Establecer el contenido del elemento con el valor del token
+          document.getElementById('jwtToken').textContent = token;
+          document.getElementById('jwtToken').setAttribute("value", token);
+          console.log(data.jwtToken);
+          alert(data.jwtToken);
+          // Redireccionar al usuario a la página de inicio
+          // window.location.href = 'index.html';
+        } else {
+          // Mostrar el mensaje de error en la página
+          errorMessage.textContent = 'Usuario o contraseña incorrectos.';
+        }
+      })
+      .catch(error => console.error(error));
+    });
+  </script>
+</body>
+
+</html>
